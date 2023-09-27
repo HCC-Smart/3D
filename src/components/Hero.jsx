@@ -1,65 +1,51 @@
-import React from "react";
-import Tilt from "react-tilt";
 import { motion } from "framer-motion";
 
 import { styles } from "../styles";
-import { services } from "../constants";
-import { SectionWrapper } from "../hoc";
-import { fadeIn, textVariant } from "../utils/motion";
+import { ComputersCanvas } from "./canvas";
 
-const ServiceCard = ({ index, title, icon }) => (
-  <Tilt className="xs:w-[250px] w-full">
-    <motion.div
-      variants={fadeIn("right", "spring", index * 0.5, 0.75)}
-      className="w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card"
-    >
-      <div
-        options={{
-          max: 45,
-          scale: 1,
-          speed: 450,
-        }}
-        className="bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col"
-      >
-        <img
-          src={icon}
-          alt="web-development"
-          className="w-16 h-16 object-contain"
-        />
-
-        <h3 className="text-white text-[20px] font-bold text-center">
-          {title}
-        </h3>
-      </div>
-    </motion.div>
-  </Tilt>
-);
-
-const About = () => {
+const Hero = () => {
   return (
-    <>
-      <motion.div variants={textVariant()}>
-        <p className={styles.sectionSubText}>Introduction</p>
-        <h2 className={styles.sectionHeadText}>Overview.</h2>
-      </motion.div>
-
-      <motion.p
-        variants={fadeIn("", "", 0.1, 1)}
-        className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
+    <section className={`relative w-full h-screen mx-auto`}>
+      <div
+        className={`absolute inset-0 top-[120px] max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}
       >
-        I'm full mern stack developer with experience in TypeScript and
-        JavaScript, and expertise in frameworks like React, and Node.js. I'm a quick learner and collaborate closely with clients to
-        create efficient, scalable, and user-friendly solutions that solve
-        real-world problems. Let's work together to bring your ideas to life!
-      </motion.p>
+        <div className="flex flex-col justify-center items-center mt-5">
+          <div className="w-5 h-5 rounded-full bg-[#915EFF]" />
+          <div className="w-1 sm:h-80 h-40 violet-gradient" />
+        </div>
 
-      <div className="mt-20 flex flex-wrap gap-10">
-        {services.map((service, index) => (
-          <ServiceCard key={service.title} index={index} {...service} />
-        ))}
+        <div>
+          <h1 className={`${styles.heroHeadText} text-white`}>
+            Hi, I'm <span className="text-[#915EFF]">Hiba</span>
+          </h1>
+          <p className={`${styles.heroSubText} mt-2 text-white-100`}>
+            I develop attractive, user <br className="sm:block hidden" />
+            interfaces and web applications
+          </p>
+        </div>
       </div>
-    </>
+      
+      <ComputersCanvas />
+
+      <div className="absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center">
+        <a href="#about">
+          <div className="w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2">
+            <motion.div
+              animate={{
+                y: [0, 24, 0],
+              }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                repeatType: "loop",
+              }}
+              className="w-3 h-3 rounded-full bg-secondary mb-1"
+            />
+          </div>
+        </a>
+      </div>
+    </section>
   );
 };
 
-export default SectionWrapper(About, "about");
+export default Hero;
