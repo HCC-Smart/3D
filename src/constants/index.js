@@ -118,15 +118,14 @@ const experiences = [
   },
   {
     title: "Other Certicicates",
-    company_name: "Tesla",
-    icon: tesla,
+    company_name: "my own",
     iconBg: "#E6DEDD",
     date: "Jan 2021 - Feb 2022",
     points: [
       "Completed Successful Frontend Web Development for Gabi School online American School  ",
       "Completed Successfull Mern Stack Develoment at JTech solutions in Mogadishu Somalia",
-      "Coursera Full Stack development certificate",
-      "Coursera for ui/ux certificate"
+      
+      "ui/ux certificate"
     ],
   },
 ]
